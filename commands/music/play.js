@@ -1,12 +1,12 @@
 module.exports = {
   name: "play",
-  aliases: ["p"],
+  aliases: ["p", "paly", "plya"],
   category: "Music",
   utilisation: "{prefix}play [name/URL]",
 
   execute(client, message, args) {
     if (!message.member.voice.channel)
-      return message.channel.send(`Abey mere ko to andar lo!!`);
+      return message.channel.send(`Not connected to voice channel!`);
 
     if (
       message.guild.me.voice.channel &&

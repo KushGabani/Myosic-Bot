@@ -6,7 +6,7 @@ module.exports = {
 
   execute(client, message, args) {
     if (!message.member.voice.channel)
-      return message.channel.send(`Abey mere ko to andar lo!!`);
+      return message.channel.send(`Not connected to voice channel!`);
 
     if (
       message.guild.me.voice.channel &&

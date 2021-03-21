@@ -2,7 +2,6 @@ const fs = require("fs");
 const discord = require("discord.js");
 const { Player } = require("discord-player");
 const client = new discord.Client({ disableMentions: "everyone" });
-const Player = new Player(client);
 
 client.player = new Player(client);
 client.config = require("./config/bot");
@@ -31,6 +30,12 @@ const player = fs
 
 for (const file of events) {
   console.log(`Loading discord.js event ${file}`);
+  const event = require(`./events/${file}`);
+  client.on(file.split(".")[0], event.bind(null, client));
+}
+
+for (const file of player) {
+  console.log(`Loading discord-player event ${file}`);
   const event = require(`./player/${file}`);
   client.player.on(file.split(".")[0], event.bind(null, client));
 }

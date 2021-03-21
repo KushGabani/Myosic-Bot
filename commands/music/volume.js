@@ -1,12 +1,12 @@
 module.exports = {
   name: "volume",
-  aliases: [],
+  aliases: ["v"],
   category: "Music",
   utilisation: "{prefix}volume [1-100]",
 
   execute(client, message, args) {
     if (!message.member.voice.channel)
-      return message.channel.send(`Abey mere ko to andar lo!!`);
+      return message.channel.send(`Not connected to voice channel!`);
 
     if (
       message.guild.me.voice.channel &&

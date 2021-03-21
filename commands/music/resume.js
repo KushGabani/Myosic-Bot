@@ -1,12 +1,12 @@
 module.exports = {
   name: "resume",
-  aliases: [],
+  aliases: ["r"],
   category: "Music",
   utilisation: "{prefix}resume",
 
   execute(client, message) {
     if (!message.member.voice.channel)
-      return message.channel.send(`Abey mere ko to andar lo!!`);
+      return message.channel.send(`Not connected to voice channel!`);
 
     if (
       message.guild.me.voice.channel &&
@@ -23,6 +23,6 @@ module.exports = {
     const success = client.player.resume(message);
 
     if (success)
-      message.channel.send(`${client.emote.success} - Song Resumed!`);
+      message.channel.send(`${client.emotes.success} - Song Resumed!`);
   },
 };
