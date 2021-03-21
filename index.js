@@ -1,67 +1,38 @@
-const Discord = require("discord.js");
-const { PREFIX, TOKEN } = require("./config.json");
+const fs = require("fs");
+const discord = require("discord.js");
+const { Player } = require("discord-player");
+const client = new discord.Client({ disableMentions: "everyone" });
+const Player = new Player(client);
 
-const client = new Discord.Client();
-client.login(TOKEN);
+client.player = new Player(client);
+client.config = require("./config/bot");
+client.emotes = client.config.emojis;
+client.filters = client.config.filters;
+client.commands = new discord.Collection();
 
-client.once("ready", () => {
-  console.log("Ready!");
-});
+fs.readdirSync("./commands").forEach((dir) => {
+  const commands = fs
+    .readdirSync(`./commands/${dir}`)
+    .filter((files) => files.endsWith(".js"));
 
-client.once("reconnecting", () => {
-  console.log("Reconnecting!");
-});
-
-client.once("disconnect", () => {
-  console.log("Disconnect!");
-});
-
-client.on("message", async (message) => {
-  if (message.author.bot) return;
-  if (!message.content.startsWith(PREFIX)) return;
-
-  if (!userIsConnected(message)) return;
-
-  if (message.content == `${PREFIX}ping`) {
-    return message.reply("Debug Profile: 'pong'");
-  } else if (message.content == `${PREFIX}pong`) {
-    return message.reply("Debug Profile: 'ping'");
-  } else if (
-    message.content.startsWith(`${PREFIX}play`) ||
-    message.content.startsWith(`${PREFIX}p`)
-  ) {
-    play(message);
-    return;
-  } else {
-    message.channel.send("You need to enter a valid command!");
+  for (const file of commands) {
+    const command = require(`./commands/${dir}/${file}`);
+    console.log(`loading command ${file}...`);
+    client.commands.set(command.name.toLowerCase(), command);
   }
 });
 
-const userIsConnected = (message) => {
-  const voiceChannel = message.member.voice.channel;
-  if (!voiceChannel) {
-    message.channel.send("Debug Profile: Abey mere ko to andar lo...");
-    return false;
-  }
-  const permissions = voiceChannel.permissionsFor(message.client.user);
-  if (!permissions.has("CONNECT") || !permissions.has("SPEAK")) {
-    message.channel.send("Pratibha diye hai suvidha nahi.");
-    return false;
-  }
+const events = fs
+  .readdirSync("./events")
+  .filter((file) => file.endsWith(".js"));
+const player = fs
+  .readdirSync("./player")
+  .filter((file) => file.endsWith(".js"));
 
-  return true;
-};
+for (const file of events) {
+  console.log(`Loading discord.js event ${file}`);
+  const event = require(`./player/${file}`);
+  client.player.on(file.split(".")[0], event.bind(null, client));
+}
 
-const play = () => {
-  const searchQuery = message.content
-    .split(" ")
-    .map((val, i) => {
-      if (i != 0) return val;
-    })
-    .join(" ")
-    .trim();
-
-  message.channel.send(
-    `Debug Profile: You searched for ${searchQuery}. Noice!`
-  );
-};
+client.login(client.config.discord.token);

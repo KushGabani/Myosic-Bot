@@ -1,0 +1,26 @@
+{
+  "name": "myosic-bot",
+  "version": "1.0.0",
+  "author": "KushGabani",
+  "description": "A discord music bot to play and listen songs with your friends in a server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KushGabani/myosic-bot.git"
+  },
+  "dependencies": {
+    "@discordjs/opus": "^0.3.3",
+    "discord-player": "^3.3.2",
+    "discord.js": "^12.5.1",
+    "ffmpeg-static": "^4.2.7"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KushGabani/myosic-bot/issues"
+  },
+  "homepage": "https://github.com/KushGabani/myosic-bot#readme"
+}
