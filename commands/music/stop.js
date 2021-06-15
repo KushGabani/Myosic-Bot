@@ -6,13 +6,33 @@ module.exports = {
 
   execute(client, message) {
     if (!message.member.voice.channel)
-      return message.channel.send(`Not connected to voice channel!`);
+      return message.channel.send({
+        embed: {
+          color: "ORANGE",
+          author: { name: "No sampark" },
+          footer: {
+            text: "Made by Kush Gabani",
+          },
+          timestamp: new Date(),
+          description: `Tum BHI mere saath nahi 😔`,
+        },
+      });
 
     if (
       message.guild.me.voice.channel &&
       message.member.voice.channel.id != message.guild.me.voice.channel.id
     )
-      return message.channel.send("Tum BHI mere saath nahi 😔");
+      return message.channel.send({
+        embed: {
+          color: "ORANGE",
+          author: { name: "No sampark" },
+          footer: {
+            text: "Made by Kush Gabani",
+          },
+          timestamp: new Date(),
+          description: `Tum BHI mere saath nahi 😔`,
+        },
+      });
 
     if (!client.player.getQueue(message))
       return message.channel.send("No song currently playing!");
@@ -21,6 +41,15 @@ module.exports = {
     const success = client.player.stop(message);
 
     if (success)
-      message.channel.send(`${client.emotes.success} - **Stopped!**`);
+      message.channel.send({
+        embed: {
+          color: "ORANGE",
+          author: { name: "Samaa jaise tham sa gaya hai 🥺" },
+          footer: {
+            text: "Made by Kush Gabani",
+          },
+          timestamp: new Date(),
+        },
+      });
   },
 };

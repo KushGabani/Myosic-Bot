@@ -8,9 +8,9 @@ module.exports = {
   },
 
   discord: {
-    token: "YOUR TOKEN",
-    prefix: "PREFIX",
-    activity: "ACTIVITY",
+    token: "ODIxMDM5NTIyMjUwNjIwOTQ4.YE96pA.YpKCm6ekxLaUg0L4y2dhGqwFgNs",
+    prefix: ",",
+    activity: "",
   },
 
   filters: [
