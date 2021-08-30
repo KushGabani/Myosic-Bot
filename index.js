@@ -1,7 +1,7 @@
 const fs = require("fs");
 const discord = require("discord.js");
-const { Player } = require("discord-player");
 const client = new discord.Client({ disableMentions: "everyone" });
+const { Player } = require("discord-player");
 
 client.player = new Player(client);
 client.config = require("./config/bot");
@@ -9,14 +9,14 @@ client.emotes = client.config.emojis;
 client.filters = client.config.filters;
 client.commands = new discord.Collection();
 
-fs.readdirSync("./commands").forEach((dir) => {
+fs.readdirSync("./commands").forEach((dirs) => {
   const commands = fs
-    .readdirSync(`./commands/${dir}`)
+    .readdirSync(`./commands/${dirs}`)
     .filter((files) => files.endsWith(".js"));
 
   for (const file of commands) {
-    const command = require(`./commands/${dir}/${file}`);
-    console.log(`loading command ${file}...`);
+    const command = require(`./commands/${dirs}/${file}`);
+    console.log(`Loading command ${file}`);
     client.commands.set(command.name.toLowerCase(), command);
   }
 });

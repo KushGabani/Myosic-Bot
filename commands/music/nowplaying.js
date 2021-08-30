@@ -6,36 +6,32 @@ module.exports = {
 
   execute(client, message) {
     if (!message.member.voice.channel)
-      return message.channel.send({
-        embed: {
-          color: "ORANGE",
-          author: { name: `Abey- mereko toh andar lo...` },
-          footer: {
-            text: "Made by Kush Gabani",
-          },
-          timestamp: new Date(),
-        },
-      });
+      return message.channel.send(
+        `${client.emotes.error} - You're not in a voice channel !`
+      );
 
     if (
       message.guild.me.voice.channel &&
-      message.member.voice.channel.id != message.guild.me.voice.channel.id
+      message.member.voice.channel.id !== message.guild.me.voice.channel.id
     )
-      return message.channel.send({
-        embed: {
-          color: "ORANGE",
-          author: { name: `Tum BHI mere saath nahi 😔` },
-          footer: {
-            text: "Made by Kush Gabani",
-          },
-          timestamp: new Date(),
-        },
-      });
+      return message.channel.send(
+        `${client.emotes.error} - You are not in the same voice channel !`
+      );
 
     if (!client.player.getQueue(message))
-      return message.channel.send("No song currently playing!");
+      return message.channel.send(
+        `${client.emotes.error} - No music currently playing !`
+      );
 
     const track = client.player.nowPlaying(message);
+    const filters = [];
+
+    Object.keys(client.player.getQueue(message).filters).forEach((filterName) =>
+      client.player.getQueue(message).filters[filterName]
+        ? filters.push(filterName)
+        : false
+    );
+
     message.channel.send({
       embed: {
         color: "RED",

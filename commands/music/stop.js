@@ -35,7 +35,16 @@ module.exports = {
       });
 
     if (!client.player.getQueue(message))
-      return message.channel.send("No song currently playing!");
+      return message.channel.send({
+        embed: {
+          color: "ORANGE",
+          author: { name: "No song is currently playing" },
+          footer: {
+            text: "Made by Kush Gabani",
+          },
+          timestamp: new Date(),
+        },
+      });
 
     client.player.setRepeatMode(message, false);
     const success = client.player.stop(message);

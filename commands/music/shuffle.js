@@ -45,6 +45,7 @@ module.exports = {
       });
 
     const success = client.player.shuffle(message);
+
     if (success)
       message.channel.send({
         embed: {

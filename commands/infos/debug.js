@@ -5,8 +5,17 @@ module.exports = {
   utilisation: "{prefix}debug",
 
   execute(client, message) {
-    message.channel.send(
-      `${client.emotes.success} - ${client.user.username} connected in **${client.voice.connections.size}** channels`
-    );
+    message.channel.send({
+      embed: {
+        color: "ORANGE",
+        author: {
+          name: `${client.user.username} connected in **${client.voice.connections.size}** channels !`,
+        },
+        footer: {
+          text: "The kishmish bot",
+        },
+        timestamp: new Date(),
+      },
+    });
   },
 };

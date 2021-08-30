@@ -19,7 +19,7 @@ module.exports = {
 
     if (
       message.guild.me.voice.channel &&
-      message.member.voice.channel.id != message.guild.me.voice.channel.id
+      message.member.voice.channel.id !== message.guild.me.voice.channel.id
     )
       return message.channel.send({
         embed: {
@@ -48,7 +48,7 @@ module.exports = {
       return message.channel.send({
         embed: {
           color: "ORANGE",
-          author: { name: `Only 1 song is playing` },
+          author: { name: `Only 1 song in the queue` },
           footer: {
             text: "Made by Kush Gabani",
           },
@@ -58,7 +58,7 @@ module.exports = {
 
     client.player.clearQueue(message);
 
-    return message.channel.send({
+    message.channel.send({
       embed: {
         color: "ORANGE",
         author: { name: `tum aur mai dono khaali 😋` },

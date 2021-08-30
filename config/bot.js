@@ -8,9 +8,9 @@ module.exports = {
   },
 
   discord: {
-    token: "ODIxMDM5NTIyMjUwNjIwOTQ4.YE96pA.plJ0GfxJ8V6sVoIxB1iqvXOtGmE",
+    token: "ODIxMDM5NTIyMjUwNjIwOTQ4.YE96pA.0sdKd3TBs_stx455Bo0LlVOOjhw",
     prefix: "-",
-    activity: "kya itna bura hu mai maa (groovy)",
+    activity: "kuch bhi toh nahi",
   },
 
   filters: [

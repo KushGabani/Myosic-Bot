@@ -1,7 +1,9 @@
 module.exports = (client, error, message, ...args) => {
   switch (error) {
     case "NotPlaying":
-      message.channel.send(`${client.emotes.error} - No song's playing!`);
+      message.channel.send(
+        `${client.emotes.error} - There is no music being played on this server !`
+      );
       break;
     case "NotConnected":
       message.channel.send({
@@ -33,7 +35,6 @@ module.exports = (client, error, message, ...args) => {
       );
       break;
     case "MusicStarting":
-      console.log(error);
       message.channel.send({
         embed: {
           color: "ORANGE",

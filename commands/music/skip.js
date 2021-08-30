@@ -1,6 +1,6 @@
 module.exports = {
   name: "skip",
-  aliases: ["sk"],
+  aliases: ["sk", "n"],
   category: "Music",
   utilisation: "{prefix}skip",
 
@@ -20,7 +20,7 @@ module.exports = {
 
     if (
       message.guild.me.voice.channel &&
-      message.member.voice.channel.id != message.guild.me.voice.channel.id
+      message.member.voice.channel.id !== message.guild.me.voice.channel.id
     )
       return message.channel.send({
         embed: {

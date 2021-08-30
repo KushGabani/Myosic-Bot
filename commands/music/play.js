@@ -1,6 +1,6 @@
 module.exports = {
   name: "play",
-  aliases: ["p", "paly", "plya"],
+  aliases: ["p"],
   category: "Music",
   utilisation: "{prefix}play [name/URL]",
 
@@ -38,14 +38,14 @@ module.exports = {
       return message.channel.send({
         embed: {
           color: "ORANGE",
-          author: { name: "No sampark" },
+          author: { name: "Kuch bajaane ko de." },
           footer: {
             text: "Made by Kush Gabani",
           },
           timestamp: new Date(),
-          description: `Kuch bajaane ko de.`,
         },
       });
+
     client.player.play(message, args.join(" "), { firstResult: true });
   },
 };

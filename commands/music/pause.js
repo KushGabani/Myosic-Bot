@@ -43,6 +43,7 @@ module.exports = {
           timestamp: new Date(),
         },
       });
+
     if (client.player.getQueue(message).paused)
       return message.channel.send({
         embed: {

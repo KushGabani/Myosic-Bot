@@ -63,8 +63,8 @@ module.exports = {
           .join("\n") +
           `\n\n${
             queue.tracks.length > 5
-              ? `And **${queue.tracks.length - 5}** other songs...`
-              : `In the playlist **${queue.tracks.length}** song(s)...`
+              ? "And" + (queue.tracks.length - 5) + "other songs..."
+              : "In the playlist" + queue.tracks.length + "song(s)..."
           }`)
     );
   },
