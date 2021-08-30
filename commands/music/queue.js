@@ -25,12 +25,11 @@ module.exports = {
       return message.channel.send({
         embed: {
           color: "ORANGE",
-          author: { name: "No sampark" },
+          author: { name: "Tum BHI mere saath nahi 😔" },
           footer: {
             text: "Made by Kush Gabani",
           },
           timestamp: new Date(),
-          description: `Tum BHI mere saath nahi 😔`,
         },
       });
 
@@ -40,12 +39,11 @@ module.exports = {
       return message.channel.send({
         embed: {
           color: "ORANGE",
-          author: { name: "Ganpat kuch to bajaa" },
+          author: { name: "Na tum baj rahe ho na hum 😕" },
           footer: {
             text: "Made by Kush Gabani",
           },
           timestamp: new Date(),
-          description: `Na tum baj rahe ho na hum 😕`,
         },
       });
 
