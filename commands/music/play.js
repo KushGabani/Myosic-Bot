@@ -34,7 +34,18 @@ module.exports = {
         },
       });
 
-    if (!args[0]) return message.channel.send(`Kuch bajaane ko de.`);
+    if (!args[0])
+      return message.channel.send({
+        embed: {
+          color: "ORANGE",
+          author: { name: "No sampark" },
+          footer: {
+            text: "Made by Kush Gabani",
+          },
+          timestamp: new Date(),
+          description: `Kuch bajaane ko de.`,
+        },
+      });
     client.player.play(message, args.join(" "), { firstResult: true });
   },
 };

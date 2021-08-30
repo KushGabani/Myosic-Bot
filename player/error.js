@@ -4,14 +4,28 @@ module.exports = (client, error, message, ...args) => {
       message.channel.send(`${client.emotes.error} - No song's playing!`);
       break;
     case "NotConnected":
-      message.channel.send(
-        `${client.emotes.error} - You aren't connected in any voice channel !`
-      );
+      message.channel.send({
+        embed: {
+          color: "ORANGE",
+          author: { name: `ae munna pehle andar toh aa` },
+          footer: {
+            text: "Made by Kush Gabani",
+          },
+          timestamp: new Date(),
+        },
+      });
       break;
     case "UnableToJoin":
-      message.channel.send(
-        `${client.emotes.error} - I am not able to join your voice channel, please check my permissions!`
-      );
+      message.channel.send({
+        embed: {
+          color: "ORANGE",
+          author: { name: `Aaj nahi darling kal aana` },
+          footer: {
+            text: "Made by Kush Gabani",
+          },
+          timestamp: new Date(),
+        },
+      });
       break;
     case "VideoUnavailable":
       message.channel.send(
@@ -19,7 +33,17 @@ module.exports = (client, error, message, ...args) => {
       );
       break;
     case "MusicStarting":
-      message.channel.send(`The music is starting... please wait and retry!`);
+      console.log(error);
+      message.channel.send({
+        embed: {
+          color: "ORANGE",
+          author: { name: `Ruko zara, sabr karo.` },
+          footer: {
+            text: "Made by Kush Gabani",
+          },
+          timestamp: new Date(),
+        },
+      });
       break;
     default:
       message.channel.send(
